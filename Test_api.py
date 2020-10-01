@@ -35,6 +35,6 @@ def test_find_by_part_of_name():
     """
     req = MyJSON(q='рск')
     response = req.do_request(req.make_url)
-    cities = ["Красноярск", "Магнитогорск", "Новосибирск", "Орск", "Усть-Каменогорск"]
-    for i in range(len(cities)):
-        assert req.get_name(response, i) == cities[i]
+    for  i in range(len(response["items"])):
+        my_str = str(req.get_name(response, i))
+        assert (my_str.find('рск',0, len(my_str)) != -1)
